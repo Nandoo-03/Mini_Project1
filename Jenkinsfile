@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/Nandoo-03/Mini_Project1.git'
+            }
+        }
+    }
+}
