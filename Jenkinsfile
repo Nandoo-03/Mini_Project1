@@ -36,9 +36,9 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 
-                sh 'kubectl apply -f namespace.yaml --validate=false'
-                sh 'kubectl apply -f deployment.yaml --validate=false'
-                sh 'kubectl apply -f service.yaml --validate=false'
+                sh 'kubectl apply -f namespace.yaml'
+                sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl apply -f service.yaml'
             }
         }
     }
