@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    environment {
-    AWS_REGION = 'ap-south-1'
-    CLUSTER_NAME = 'eks-cluster'
-  }
+
     
     stages {
 
@@ -32,7 +29,7 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                sh 'sudo aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME'
+                
                 sh 'kubectl apply -f namespace.yml'
                 sh 'kubectl apply -f deployment.yml'
                 sh 'kubectl apply -f service.yml'
