@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: trend-service
+  namespace: mini-project-1
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: trend-app
+
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000

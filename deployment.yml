@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: trend-app
+  namespace: mini-project-1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trend-app
+  template:
+    metadata:
+      name: trend-app
+      labels:
+        app: trend-app
+    spec:
+      containers:
+        - name: trend-app
+          image: nandoo03/apps:latest
+          ports:
+            - containerPort: 3000
