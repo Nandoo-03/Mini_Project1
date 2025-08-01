@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy to EKS') {
             steps {
-                sh 'aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME'
+                sh 'sudo aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME'
                 sh 'kubectl apply -f namespace.yml'
                 sh 'kubectl apply -f deployment.yml'
                 sh 'kubectl apply -f service.yml'
