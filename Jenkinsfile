@@ -2,6 +2,7 @@ pipeline {
     agent any
     
     stages {
+        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Nandoo-03/Mini_Project1.git'
@@ -13,7 +14,7 @@ pipeline {
                 sh 'docker build -t nandoo03/app:latest .'
             }
         }
-        
+
         stage('Push to Dockerhub') {
             steps {
                     echo "Pushing an image to Dockerhub"
