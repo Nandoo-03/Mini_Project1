@@ -27,6 +27,12 @@ pipeline {
             }
         }
 
+        stage('update kubeconfig') {
+            steps{
+                sh './kubeconfig.sh'
+            }
+        }
+
         stage('Deploy to EKS') {
             steps {
                 
