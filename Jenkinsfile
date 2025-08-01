@@ -13,7 +13,6 @@ pipeline {
                 sh 'docker build -t nandoo03/app:latest .'
             }
         }
-        
         stage('Push to Dockerhub') {
             step{
                     echo "Pushing an image to Dockerhub"
