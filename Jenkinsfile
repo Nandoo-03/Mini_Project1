@@ -14,7 +14,7 @@ pipeline {
             }
         }
         stage('Push to Dockerhub') {
-            step{
+            steps {
                     echo "Pushing an image to Dockerhub"
                 withCredentials([usernamePassword(credentialsId:"dockerHublogin",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
                     sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
@@ -25,7 +25,7 @@ pipeline {
         }
 
         stage('Deploy to EKS') {
-            step{
+            steps {
                 sh 'kubectl apply -f namespace.yml'
                 sh 'kubectl apply -f deployment.yml'
                 sh 'kubectl apply -f service.yml'
