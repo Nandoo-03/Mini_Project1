@@ -13,7 +13,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t nandoo03/app:latest .'
-                sh 'chmod 777 /var/run/docker.sock'
+                
             }
         }
 
