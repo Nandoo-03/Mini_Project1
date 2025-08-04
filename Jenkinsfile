@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                     echo "AWS Credentials"
-                withAWS(credentials: 'aws_credentials', region: "${AWS_DEFAULT_REGION}") {
+                withAWS(credentials: 'aws_credentials ', region: "${AWS_DEFAULT_REGION}") {
                 script{
                     sh "aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION} --name ${EKS_CLUSTER_NAME}"
                     sh 'chmod +x deploy.sh && ./deploy.sh'
