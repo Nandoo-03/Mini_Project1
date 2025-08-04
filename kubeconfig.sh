@@ -1,1 +1,1 @@
-aws eks --region ap-south-1 update-kubeconfig --name eks-cluster
+aws eks update-kubeconfig --region ap-south-1 --name eks-cluster
