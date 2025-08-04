@@ -39,6 +39,7 @@ pipeline {
                 script{
                     sh "aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION} --name ${EKS_CLUSTER_NAME}"
                     sh 'chmod +x deploy.sh && ./deploy.sh'
+                    }
                 }
             }
         }
