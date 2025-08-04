@@ -9,12 +9,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Nandoo-03/Mini_Project1.git'
             }
         }
-        stage('Build Docker permission') {
-            steps {
-                sh 'chmod 777 /var/run/docker.sock'
-                
-            }
-        }
+    
 
         stage('Build Docker Image') {
             steps {
