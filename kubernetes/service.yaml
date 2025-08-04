@@ -2,7 +2,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: trend-service
-  namespace: mini-project-1
 
 spec:
   type: LoadBalancer

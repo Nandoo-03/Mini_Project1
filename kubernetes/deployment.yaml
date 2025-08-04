@@ -2,7 +2,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: trend-app
-  namespace: mini-project-1
+  
 spec:
   replicas: 2
   selector:
