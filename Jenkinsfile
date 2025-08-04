@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build Docker permission') {
             steps {
-                sh 'sudo /bin/chmod 777 /var/run/docker.sock'
+                sh 'chmod 777 /var/run/docker.sock'
                 
             }
         }
