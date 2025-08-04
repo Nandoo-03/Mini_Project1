@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        AWS_DEFAULT_REGION='ap-south-1'
+        EKS_CLUSTER_NAME = 'eks-cluster'
+    }
 
     
     stages {
@@ -28,15 +32,12 @@ pipeline {
             }
         }
 
-        stage('update kubeconfig') {
-            steps{
-                sh './kubeconfig.sh'
-            }
-        }
-
         stage('Deploy to EKS') {
             steps {
+                    echo "AWS Credentials"
+                withAWS(credentials: 'aws-credentials', region: env.AWS_DEFAULT_REGION) {
                 script{
+                    sh "aws eks update-kubeconfig --region ${AWS_DEFAULT_REGION} --name ${EKS_CLUSTER_NAME}"
                     sh 'chmod +x deploy.sh && ./deploy.sh'
                 }
             }
