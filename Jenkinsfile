@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t nandoo03/app:latest .'
+                sh 'docker build -t app:latest .'
                 
             }
         }
