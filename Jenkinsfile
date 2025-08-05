@@ -5,7 +5,6 @@ pipeline {
         EKS_CLUSTER_NAME = 'eks-cluster'
     }
 
-    
     stages {
 
         stage('Checkout') {
