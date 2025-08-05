@@ -18,4 +18,4 @@ spec:
         - name: trend-app
           image: nandoo03/apps:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 80
