@@ -173,7 +173,7 @@ resource "aws_iam_role_policy" "allow_describe_eks_cluster" {
       {
         Effect = "Allow"
         Action = "eks:DescribeCluster"
-        Resource = "arn:aws:eks:ap-south-1:195389696200:cluster/eks-cluster"
+        Resource = "arn:aws:eks:ap-south-1:412902451006:cluster/eks-cluster"
       }
     ]
   })
@@ -194,6 +194,11 @@ resource "aws_iam_role_policy_attachment" "eks_worker_node" {
 resource "aws_iam_role_policy_attachment" "eks_service" {
   role       = aws_iam_role.ec2_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+}
+
+resource "aws_iam_role_policy_attachment" "jenkins_ecr_readonly" {
+  role       = aws_iam_role.ec2_role.name 
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
 
 resource "aws_iam_role_policy_attachment" "admin_access" {
@@ -231,7 +236,7 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 #EC2 instance
 resource "aws_instance" "myserver" {
 
-    ami = "ami-0f918f7e67a3323f0"
+    ami = "ami-02d26659fd82cf299"
     instance_type = "t2.medium"
     depends_on = [aws_security_group.instance-sg,aws_key_pair.my-key]
     subnet_id = aws_subnet.Public_subnet_1.id

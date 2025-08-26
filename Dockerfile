@@ -1,4 +1,5 @@
 FROM nginx
 COPY dist/ /usr/share/nginx/html
-EXPOSE 80
+COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]

@@ -31,8 +31,18 @@ resource "aws_iam_policy" "eks_readonly_policy" {
           "eks:ListClusters",
           "eks:DescribeCluster",
           "eks:ListNodegroups",
-          "eks:DescribeNodegroup"
-        ],
+          "eks:DescribeNodegroup",
+          "eks:ListUpdates",
+          "eks:DescribeUpdate"
+        ]
+        Resource = "*"
+      },
+     {
+        Effect = "Allow"
+        Action = [
+          "iam:GetRole",
+          "iam:ListAttachedRolePolicies"
+        ]
         Resource = "*"
       }
     ]
@@ -40,7 +50,7 @@ resource "aws_iam_policy" "eks_readonly_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "eks_readonly_access" {
-  role       = aws_iam_role.eks_cluster_role.name
+  role       = aws_iam_role.ec2_role.name
   policy_arn = aws_iam_policy.eks_readonly_policy.arn
 }
 
@@ -116,6 +126,7 @@ resource "aws_eks_node_group" "node_group" {
     aws_iam_role_policy_attachment.worker_node_policy,
     aws_iam_role_policy_attachment.cni_policy,
     aws_iam_role_policy_attachment.registry_readonly,
-    aws_iam_role_policy_attachment.eks_readonly_access
+    aws_iam_role_policy_attachment.eks_readonly_access,
+    aws_eks_cluster.main
   ]
 }

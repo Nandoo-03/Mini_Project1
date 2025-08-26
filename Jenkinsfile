@@ -8,7 +8,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
+        stage ('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/Nandoo-03/Mini_Project1.git'
             }
