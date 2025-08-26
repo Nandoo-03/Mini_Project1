@@ -1,2 +1,2 @@
 # Mini_Project1
-Mini project from GUVI
+Mini project from GUVI.
